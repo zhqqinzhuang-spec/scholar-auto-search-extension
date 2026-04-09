@@ -1,0 +1,46 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>Scholar Auto Search</title>
+    <style>
+      body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Arial; margin: 12px; width: 340px; }
+      h3 { margin: 0 0 10px 0; font-size:16px; }
+      input, textarea { width: 100%; padding: 6px; box-sizing: border-box; margin: 6px 0; }
+      button { padding: 6px 10px; margin-right:6px; }
+      .row { margin-bottom: 8px; }
+      #result { margin-top:8px; font-size:13px; max-height:220px; overflow:auto; border-top:1px solid #eee; padding-top:8px; }
+      label { font-size:13px; color:#333; }
+    </style>
+  </head>
+  <body>
+    <h3>Scholar Auto Search</h3>
+
+    <div class="row">
+      <label>关键词（逗号分隔）</label>
+      <input id="keywords" placeholder="例如：deep learning, graph neural" />
+      <button id="runKeywords">运行关键词检索</button>
+    </div>
+
+    <div class="row">
+      <label>近似语义检索（本地）</label>
+      <input id="semanticQuery" placeholder="示例论文标题或简短描述" />
+      <div style="margin-top:6px">
+        <input id="topK" type="number" value="5" style="width:70px;display:inline-block" /> <button id="runSemantic">运行本地语义检索</button>
+        <button id="fetchPapers" style="float:right">获取页面论文</button>
+      </div>
+    </div>
+
+    <div class="row">
+      <label>远程后端（可选）</label>
+      <input id="backendUrl" placeholder="后端 URL（可选），用于语义检索" />
+      <input id="backendApiKey" placeholder="后端 API Key（可选）" />
+      <button id="saveBackend">保存设置</button>
+    </div>
+
+    <div id="result"></div>
+
+    <script src="popup.js"></script>
+  </body>
+</html>

@@ -1,0 +1,32 @@
+{
+  "manifest_version": 3,
+  "name": "Scholar Auto Search",
+  "version": "1.0.0",
+  "description": "在 Google Scholar 页面自动搜索、筛选并高亮你感兴趣的论文（本地关键词匹配 + 本地近似语义检索）",
+  "permissions": [
+    "storage",
+    "activeTab",
+    "scripting"
+  ],
+  "host_permissions": [
+    "*://scholar.google.com/*"
+  ],
+  "action": {
+    "default_popup": "popup.html"
+  },
+  "background": {
+    "service_worker": "background.js"
+  },
+  "content_scripts": [
+    {
+      "matches": [
+        "*://scholar.google.com/*"
+      ],
+      "js": [
+        "utils.js",
+        "content.js"
+      ],
+      "run_at": "document_idle"
+    }
+  ]
+}
